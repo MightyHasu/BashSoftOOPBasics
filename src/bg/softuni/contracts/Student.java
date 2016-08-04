@@ -1,10 +1,8 @@
 package bg.softuni.contracts;
 
-import bg.softuni.models.SoftUniCourse;
-
 import java.util.Map;
 
-public interface Student {
+public interface Student extends Comparable<Student> {
 
     void SoftUniStudent(String userName);
 

@@ -66,6 +66,22 @@ public class SoftUniStudent implements Student {
         this.marksByCourseName.put(courseName, mark);
     }
 
+    public String getMarkForCourse(String courseName) {
+        String output = String.format("%s - %f",
+                this.userName, marksByCourseName.get(courseName));
+        return output;
+    }
+
+    @Override
+    public int compareTo(Student other) {
+        return this.getUserName().compareTo(other.getUserName());
+    }
+
+    @Override
+    public String toString() {
+        return this.getUserName();
+    }
+
     private double calculateMark(int[] scores) {
         double percentageOfSolvedExam = Arrays.stream(scores).sum() /
                 (double) (SoftUniCourse.NUMBER_OF_TASKS_ON_EXAM * SoftUniCourse.MAX_SCORE_ON_EXAM_TASK);
@@ -73,9 +89,8 @@ public class SoftUniStudent implements Student {
         return mark;
     }
 
-    public String getMarkForCourse(String courseName) {
-        String output = String.format("%s - %f",
-                this.userName, marksByCourseName.get(courseName));
-        return output;
+    @Override
+    public void enrollInCourse(Course course) {
+
     }
 }
