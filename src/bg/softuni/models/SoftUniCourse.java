@@ -26,13 +26,6 @@ public class SoftUniCourse implements Course{
         return name;
     }
 
-    private void setName(String name) {
-        if (name == null || name.equals("")) {
-            throw new InvalidStringException();
-        }
-        this.name = name;
-    }
-
     public Map<String, Student> getStudentsByName() {
         return Collections.unmodifiableMap(this.studentsByName);
     }
@@ -54,5 +47,12 @@ public class SoftUniCourse implements Course{
     @Override
     public String toString() {
         return this.getName();
+    }
+
+    private void setName(String name) {
+        if (name == null || name.equals("")) {
+            throw new InvalidStringException();
+        }
+        this.name = name;
     }
 }

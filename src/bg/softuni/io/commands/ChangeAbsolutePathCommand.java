@@ -1,20 +1,14 @@
 package bg.softuni.io.commands;
 
+import bg.softuni.annotations.Alias;
+import bg.softuni.annotations.Inject;
 import bg.softuni.contracts.DirectoryManager;
 import bg.softuni.exceptions.InvalidInputException;
-import bg.softuni.judge.Tester;
-import bg.softuni.network.DownloadManager;
-import bg.softuni.repository.StudentsRepository;
-
+@Alias("cdrel")
 public class ChangeAbsolutePathCommand extends Command {
 
-    public ChangeAbsolutePathCommand(String input,
-                                     String[] data,
-                                     Tester tester,
-                                     StudentsRepository repository,
-                                     DownloadManager downloadManager,
-                                     DirectoryManager ioManager) {
-        super(input, data, tester, repository, downloadManager, ioManager);
+    public ChangeAbsolutePathCommand(String input, String[] data) {
+        super(input, data);
     }
 
     @Override
@@ -25,6 +19,9 @@ public class ChangeAbsolutePathCommand extends Command {
         }
 
         String absolutePath = data[1];
-        this.getIoManager().changeCurrentDirAbsolute(absolutePath);
+        this.ioManager.changeCurrentDirAbsolute(absolutePath);
     }
+
+    @Inject
+    private DirectoryManager ioManager;
 }
